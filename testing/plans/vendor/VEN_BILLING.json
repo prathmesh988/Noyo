@@ -1,0 +1,50 @@
+{
+  "routeId": "VEN_BILLING",
+  "portal": "vendor",
+  "path": "/vendor/booking/:id/billing",
+  "requiredRole": "vendor",
+  "preconditions": "Requires in-progress booking ID",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/vendor/booking/:id/billing",
+      "expectedVisibleResult": "Page loaded at /vendor/booking/:id/billing",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 2,
+      "action": "click",
+      "locatorHint": "button:has-text(\"setViewMode('timeline')}>\")",
+      "expectedVisibleResult": "Button setViewMode('timeline')}> clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 3,
+      "action": "click",
+      "locatorHint": "button:has-text(\"{selected ?  : }\")",
+      "expectedVisibleResult": "Button {selected ?  : } clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 4,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Add Row\")",
+      "expectedVisibleResult": "Button Add Row clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

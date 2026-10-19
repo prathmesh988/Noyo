@@ -205,7 +205,7 @@ const PackageBased = () => {
 
   // Helper to upload media to Cloudinary
   const handleMediaUpload = async (file, type) => {
-    const folder = `Doormeets/categories/${type}`;
+    const folder = `Noyo/categories/${type}`;
     if (type === 'icon' || type === 'main_icon') setUploadingIcon(true);
     if (type === 'image') setUploadingImage(true);
     if (type === 'video') setUploadingVideo(true);

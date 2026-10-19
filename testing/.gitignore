@@ -1,0 +1,9 @@
+.env
+node_modules/
+reports/
+artifacts/
+cache/
+traces/
+videos/
+test-results/
+playwright-report/

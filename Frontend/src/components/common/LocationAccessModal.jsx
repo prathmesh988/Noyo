@@ -31,13 +31,13 @@ const LocationAccessModal = ({
     if (locationDisabled) {
       return {
         title: "LOCATION IS OFF",
-        subtitle: "Please turn on your GPS to continue using Doormeets features.",
+        subtitle: "Please turn on your GPS to continue using Noyo features.",
         icon: FiSettings
       };
     }
     return {
       title: "ALLOW GPS LOCATION",
-      subtitle: "Doormeets needs your location to show available services and vendors near you.",
+      subtitle: "Noyo needs your location to show available services and vendors near you.",
       icon: FiNavigation
     };
   };

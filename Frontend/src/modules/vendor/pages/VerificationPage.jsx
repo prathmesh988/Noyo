@@ -234,7 +234,7 @@ const VerificationPage = () => {
   };
 
   const handleSubscriptionComplete = () => {
-    toast.success('Verification complete! Welcome to Doormeets.');
+    toast.success('Verification complete! Welcome to Noyo.');
     const pvStatus = vendor?.policeVerification?.status || 'pending';
     if (pvStatus === 'approved') {
       navigate('/vendor/dashboard', { replace: true });

@@ -1,0 +1,34 @@
+{
+  "routeId": "USER_BOOKING_TRACK",
+  "portal": "user",
+  "path": "/user/booking/:id/track",
+  "requiredRole": "user",
+  "preconditions": "Requires active in-progress booking ID",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/user/booking/:id/track",
+      "expectedVisibleResult": "Page loaded at /user/booking/:id/track",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 2,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Pay Online Now\")",
+      "expectedVisibleResult": "Button Pay Online Now clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

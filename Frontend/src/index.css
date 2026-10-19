@@ -472,3 +472,28 @@ html {
 .focus\:ring-primary-500:focus {
   --tw-ring-color: #2874F0;
 }
+
+/* Ensure select and option dropdowns are always legible across platforms/browsers */
+select {
+  color: #111827;
+  color-scheme: light;
+}
+
+select option {
+  color: #111827 !important;
+  background-color: #ffffff !important;
+}
+
+/* Admin panel modals and forms explicit light-mode enforcement */
+.admin-modal,
+.admin-modal select,
+.admin-modal input,
+.admin-modal textarea {
+  color-scheme: light !important;
+  color: #111827 !important;
+}
+
+.admin-modal select option {
+  color: #111827 !important;
+  background-color: #ffffff !important;
+}

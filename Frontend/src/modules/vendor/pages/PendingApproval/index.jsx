@@ -112,7 +112,7 @@ const PendingApproval = () => {
         </div>
 
         <p className="mt-8 text-center text-sm text-gray-500">
-          Need help? <a href="mailto:support@Doormeets.in" className="font-bold text-[#347989] hover:underline">Contact Support</a>
+          Need help? <a href="mailto:support@noyo.in" className="font-bold text-[#347989] hover:underline">Contact Support</a>
         </p>
       </div>
     </div>

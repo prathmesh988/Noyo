@@ -102,7 +102,7 @@ const VendorSignup = () => {
           Vendor Registration
         </h2>
         <p className="mt-2 text-sm text-gray-600 animate-stagger-1 animate-fade-in">
-          Join Doormeets to grow your business
+          Join Noyo Partner to grow your business (Powered by Appzeto)
         </p>
       </div>
 

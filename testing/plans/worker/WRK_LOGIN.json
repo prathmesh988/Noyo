@@ -1,0 +1,25 @@
+{
+  "routeId": "WRK_LOGIN",
+  "portal": "worker",
+  "path": "/worker/login",
+  "requiredRole": "public",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/worker/login",
+      "expectedVisibleResult": "Page loaded at /worker/login",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

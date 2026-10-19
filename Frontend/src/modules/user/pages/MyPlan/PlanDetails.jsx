@@ -432,8 +432,8 @@ const PlanDetails = () => {
               Payment is 100% secure. You can cancel your subscription at any time from your settings. Benefits are applied instantly after payment completion.
             </p>
           </div>
-          <p className="text-center text-gray-300 text-[10px] uppercase font-bold tracking-widest pb-10">
-            Doormeets Subscription • Secure & Trusted
+          <p className="text-center text-gray-400 text-[10px] uppercase font-bold tracking-widest pb-10">
+            Noyo Subscription • Secure & Trusted (Powered by Appzeto)
           </p>
         </div>
       </div>

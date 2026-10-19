@@ -1,16 +1,17 @@
 import React, { forwardRef } from 'react';
 
 /**
- * Doormeets Logo Component
- * Uses /cleaning-expert-logo.png from public/ folder
- * Usage: <Logo className="h-12 w-auto" />
+ * Noyo Logo Component
+ * Primary client brand: Noyo | Platform Agency: Appzeto
+ * Uses /noyo-logo.svg (full brand + Powered by Appzeto) and /noyo-icon.svg (compact emblem)
+ * Usage: <Logo className="h-10 w-auto" /> or <Logo iconOnly={true} className="w-8 h-8" />
  */
-const Logo = forwardRef(({ className = "h-12 w-auto", iconOnly = false, ...props }, ref) => {
+const Logo = forwardRef(({ className = "h-12 w-auto", iconOnly = false, alt = "Noyo - Powered by Appzeto", ...props }, ref) => {
   return (
     <img
       ref={ref}
-      src="/cleaning-expert-logo.png"
-      alt="Doormeets"
+      src={iconOnly ? "/noyo-icon.svg" : "/noyo-logo.svg"}
+      alt={alt}
       className={className}
       {...props}
     />

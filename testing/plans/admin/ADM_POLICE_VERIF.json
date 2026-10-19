@@ -1,0 +1,25 @@
+{
+  "routeId": "ADM_POLICE_VERIF",
+  "portal": "admin",
+  "path": "/admin/vendors/police-verification",
+  "requiredRole": "admin",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/admin/vendors/police-verification",
+      "expectedVisibleResult": "Page loaded at /admin/vendors/police-verification",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

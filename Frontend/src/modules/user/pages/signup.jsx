@@ -111,7 +111,7 @@ const Signup = () => {
 
           toast.success(
             <div className="flex flex-col">
-              <span className="font-bold">Welcome to Doormeets!</span>
+              <span className="font-bold">Welcome to Noyo!</span>
               <span className="text-xs">Your account has been created successfully.</span>
             </div>,
             { icon: <FiCheckCircle className="text-green-500" /> }
@@ -203,7 +203,7 @@ const Signup = () => {
 
         toast.success(
           <div className="flex flex-col">
-            <span className="font-bold">Welcome to Doormeets!</span>
+            <span className="font-bold">Welcome to Noyo!</span>
             <span className="text-xs">Account created successfully.</span>
           </div>,
           { icon: <FiCheckCircle className="text-green-500" /> }
@@ -253,7 +253,7 @@ const Signup = () => {
             </h2>
             <p className="mt-1.5 text-sm text-gray-500 font-normal">
               {step === 'details'
-                ? 'Join Doormeets to start booking services'
+                ? 'Join Noyo to start booking services'
                 : `We've sent a 6-digit code to +91 ${formData.phoneNumber}`
               }
             </p>
@@ -461,7 +461,7 @@ const Signup = () => {
               </Link>
             </p>
             <p className="mt-3 text-center text-xs text-gray-400 font-normal">
-              &copy; {new Date().getFullYear()} Doormeets. All rights reserved.
+              &copy; {new Date().getFullYear()} Noyo. Powered by Appzeto. All rights reserved.
             </p>
           </div>
         </div>

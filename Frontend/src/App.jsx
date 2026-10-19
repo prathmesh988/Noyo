@@ -14,8 +14,8 @@ const ThemeRouteManager = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const isVendorOrWorker = location.pathname.startsWith('/vendor') || location.pathname.startsWith('/worker');
-    if (isVendorOrWorker) {
+    const isLightPanel = location.pathname.startsWith('/vendor') || location.pathname.startsWith('/worker') || location.pathname.startsWith('/admin');
+    if (isLightPanel) {
       document.documentElement.removeAttribute('data-theme');
       document.documentElement.classList.remove('dark');
     } else {

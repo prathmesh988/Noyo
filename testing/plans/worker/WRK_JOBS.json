@@ -1,0 +1,25 @@
+{
+  "routeId": "WRK_JOBS",
+  "portal": "worker",
+  "path": "/worker/jobs",
+  "requiredRole": "worker",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/worker/jobs",
+      "expectedVisibleResult": "Page loaded at /worker/jobs",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

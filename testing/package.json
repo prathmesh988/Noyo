@@ -1,0 +1,26 @@
+{
+  "name": "noyo-qa-automation",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Playwright and Gemini UI QA Automation Suite for Noyo",
+  "scripts": {
+    "qa:safety": "tsx helpers/safety-check.ts",
+    "qa:analyze": "tsx helpers/static-analyzer.ts",
+    "qa:plan": "tsx helpers/planner-cli.ts",
+    "qa:seed": "tsx seed/seed-dev.ts",
+    "qa:seed:clean": "tsx seed/cleanup-dev.ts",
+    "qa:run": "playwright test",
+    "qa:report": "tsx helpers/reporter-cli.ts",
+    "qa:all": "npm run qa:safety && npm run qa:analyze && npm run qa:seed && npm run qa:run && npm run qa:report"
+  },
+  "dependencies": {
+    "@google/genai": "^2.30.0",
+    "@playwright/test": "^1.50.0",
+    "dotenv": "^16.4.7",
+    "mongoose": "^8.9.5",
+    "socket.io-client": "^4.8.1",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "zod": "^3.24.1"
+  }
+}

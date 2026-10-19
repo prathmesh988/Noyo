@@ -1,0 +1,26 @@
+{
+  "routeId": "VEN_ASSIGN_WORKER",
+  "portal": "vendor",
+  "path": "/vendor/booking/:id/assign-worker",
+  "requiredRole": "vendor",
+  "preconditions": "Requires accepted booking ID and registered worker",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/vendor/booking/:id/assign-worker",
+      "expectedVisibleResult": "Page loaded at /vendor/booking/:id/assign-worker",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

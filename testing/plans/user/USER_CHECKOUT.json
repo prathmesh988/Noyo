@@ -1,0 +1,42 @@
+{
+  "routeId": "USER_CHECKOUT",
+  "portal": "user",
+  "path": "/user/checkout",
+  "requiredRole": "user",
+  "preconditions": "Requires items in cart and selected address",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/user/checkout",
+      "expectedVisibleResult": "Page loaded at /user/checkout",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 2,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Remove\")",
+      "expectedVisibleResult": "Button Remove clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 3,
+      "action": "click",
+      "locatorHint": "button:has-text(\"{promoLoading ? 'Applying...' : 'Apply'}\")",
+      "expectedVisibleResult": "Button {promoLoading ? 'Applying...' : 'Apply'} clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

@@ -908,7 +908,7 @@ const CategoriesPage = ({ catalog, setCatalog, selectedCity, cities = [], filter
                       setUploadingIcon(true);
                       try {
                         const categorySlug = form.slug || form.title?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-                        const folder = `Doormeets/${categorySlug}/icons`;
+                        const folder = `Noyo/${categorySlug}/icons`;
                         const response = await serviceService.uploadImage(file, folder);
                         if (response.success && response.imageUrl) {
                           setForm((p) => ({ ...p, homeIconUrl: response.imageUrl }));
@@ -951,7 +951,7 @@ const CategoriesPage = ({ catalog, setCatalog, selectedCity, cities = [], filter
                       setUploadingBanner(true);
                       try {
                         const categorySlug = form.slug || form.title?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-                        const folder = `Doormeets/${categorySlug}/banners`;
+                        const folder = `Noyo/${categorySlug}/banners`;
                         const response = await serviceService.uploadImage(file, folder);
                         if (response.success && response.imageUrl) {
                           setForm((p) => ({ ...p, bannerImage: response.imageUrl }));

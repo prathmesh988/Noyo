@@ -1,3 +1,10 @@
 branch_structure.json
 temp_auto_push.bat
 temp_interactive_push.bat
+testing/.env
+testing/reports/
+testing/artifacts/
+testing/cache/
+traces/
+videos/
+

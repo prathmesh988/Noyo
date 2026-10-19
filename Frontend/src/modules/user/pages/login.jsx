@@ -349,14 +349,14 @@ const Login = () => {
           <div className="mt-5">
             {step === 'phone' && (
               <p className="text-center text-sm text-gray-500 font-medium">
-                New to Doormeets?{' '}
+                New to Noyo?{' '}
                 <Link to="/user/signup" className="text-[#B33A35] hover:text-[#9E2E2A] font-semibold transition-colors">
                   Create an account
                 </Link>
               </p>
             )}
             <p className="mt-3 text-center text-xs text-gray-400 font-normal">
-              &copy; {new Date().getFullYear()} Doormeets. All rights reserved.
+              &copy; {new Date().getFullYear()} Noyo. Powered by Appzeto. All rights reserved.
             </p>
           </div>
         </div>

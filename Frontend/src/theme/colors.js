@@ -9,7 +9,7 @@
  * - Worker module: import { workerTheme } from '../../../../theme'
  */
 
-// Doormeets Core Brand Colors
+// Noyo Core Brand Colors (Powered by Appzeto)
 const brand = {
   teal: '#B33A35', // Primary Red/Rust
   yellow: '#9E2E2A', // Primary Hover

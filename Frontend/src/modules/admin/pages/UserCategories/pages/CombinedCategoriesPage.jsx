@@ -429,7 +429,7 @@ const CombinedCategoriesPage = ({ catalog, setCatalog, selectedCity, cities = []
                       setUploadingIcon(true);
                       try {
                         const slug = form.slug || form.title?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
-                        const response = await serviceService.uploadImage(file, `Doormeets/${slug}/icons`);
+                        const response = await serviceService.uploadImage(file, `Noyo/${slug}/icons`);
                         if (response.success && response.imageUrl) {
                           setForm(p => ({ ...p, homeIconUrl: response.imageUrl }));
                           toast.success("Icon uploaded successfully");

@@ -28,7 +28,7 @@ const Profile = () => {
     { id: 12, label: 'Performance & Stats', icon: FiBox, path: '/vendor/my-services' },
     { id: 7, label: 'Manage Address', icon: FiMapPin, path: '/vendor/address-management' },
     { id: 8, label: 'Settings', icon: FiSettings, path: '/vendor/settings' },
-    { id: 9, label: 'About Doormeets', icon: null, customIcon: 'S', path: '/vendor/about-cleaning-expert' },
+    { id: 9, label: 'About Noyo', icon: null, customIcon: 'S', path: '/vendor/about-cleaning-expert' },
     { id: 13, label: 'Stock Management', icon: FiBox, path: '/vendor/stock' },
   ];
 

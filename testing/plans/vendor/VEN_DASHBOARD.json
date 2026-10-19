@@ -1,0 +1,25 @@
+{
+  "routeId": "VEN_DASHBOARD",
+  "portal": "vendor",
+  "path": "/vendor/dashboard",
+  "requiredRole": "vendor",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/vendor/dashboard",
+      "expectedVisibleResult": "Page loaded at /vendor/dashboard",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

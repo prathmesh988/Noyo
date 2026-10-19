@@ -354,7 +354,7 @@ const VendorLogin = () => {
               </p>
             )}
             <p className="mt-3 text-center text-xs text-gray-400 font-normal">
-              &copy; {new Date().getFullYear()} Doormeets. All rights reserved.
+              &copy; {new Date().getFullYear()} Noyo Partner. Powered by Appzeto. All rights reserved.
             </p>
           </div>
         </div>

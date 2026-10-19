@@ -1,0 +1,25 @@
+{
+  "routeId": "VEN_EARNINGS",
+  "portal": "vendor",
+  "path": "/vendor/earnings",
+  "requiredRole": "vendor",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/vendor/earnings",
+      "expectedVisibleResult": "Page loaded at /vendor/earnings",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

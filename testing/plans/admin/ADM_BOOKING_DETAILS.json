@@ -1,0 +1,50 @@
+{
+  "routeId": "ADM_BOOKING_DETAILS",
+  "portal": "admin",
+  "path": "/admin/bookings/:id",
+  "requiredRole": "admin",
+  "preconditions": "Requires booking ID",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/admin/bookings/:id",
+      "expectedVisibleResult": "Page loaded at /admin/bookings/:id",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 2,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Approve Cancellation\")",
+      "expectedVisibleResult": "Button Approve Cancellation clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 3,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Reject Request\")",
+      "expectedVisibleResult": "Button Reject Request clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 4,
+      "action": "click",
+      "locatorHint": "button:has-text(\"{cancelling ? 'Cancelling...' : 'Yes, Cancel'}\")",
+      "expectedVisibleResult": "Button {cancelling ? 'Cancelling...' : 'Yes, Cancel'} clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

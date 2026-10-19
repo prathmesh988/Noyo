@@ -229,7 +229,7 @@ const SubCategoriesPage = ({ selectedCity, filterTemplateId }) => {
                           setUploadingIcon(true);
                           try {
                             const slug = formData.title?.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '') || 'subcategory';
-                            const folder = `Doormeets/subcategories/${slug}/icons`;
+                            const folder = `Noyo/subcategories/${slug}/icons`;
                             const response = await serviceService.uploadImage(file, folder);
                             if (response.success && response.imageUrl) {
                               setFormData((p) => ({ ...p, iconUrl: response.imageUrl }));

@@ -1,0 +1,25 @@
+{
+  "routeId": "VEN_WORKERS",
+  "portal": "vendor",
+  "path": "/vendor/workers",
+  "requiredRole": "vendor",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/vendor/workers",
+      "expectedVisibleResult": "Page loaded at /vendor/workers",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

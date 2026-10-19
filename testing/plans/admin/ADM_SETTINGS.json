@@ -1,0 +1,33 @@
+{
+  "routeId": "ADM_SETTINGS",
+  "portal": "admin",
+  "path": "/admin/settings",
+  "requiredRole": "admin",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/admin/settings",
+      "expectedVisibleResult": "Page loaded at /admin/settings",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 2,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Remove\")",
+      "expectedVisibleResult": "Button Remove clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

@@ -1,0 +1,25 @@
+{
+  "routeId": "VEN_SIGNUP",
+  "portal": "vendor",
+  "path": "/vendor/signup",
+  "requiredRole": "public",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/vendor/signup",
+      "expectedVisibleResult": "Page loaded at /vendor/signup",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

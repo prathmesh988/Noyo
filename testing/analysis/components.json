@@ -1,0 +1,1052 @@
+{
+  "PUB_LANDING": {
+    "componentName": "LandingPage",
+    "componentPath": "modules/landing/pages/LandingPage.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": []
+  },
+  "USER_WELCOME": {
+    "componentName": "Welcome",
+    "componentPath": "modules/user/pages/Welcome.jsx",
+    "buttons": [
+      "Skip"
+    ],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/user/login"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": []
+  },
+  "USER_LOGIN": {
+    "componentName": "Login",
+    "componentPath": "modules/user/pages/login/index.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [
+      "block w-full pl-16 pr-4 py-3.5 bg-transparent border-0 text-sm text-gray-900 focus:outline-none focus:ring-0 focus:border-0",
+      "placeholder:98765 43210"
+    ],
+    "forms": [
+      "form"
+    ],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [
+      "Close"
+    ],
+    "navigatesTo": [
+      "/user"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Logo",
+      "LogoLoader"
+    ]
+  },
+  "USER_SIGNUP": {
+    "componentName": "Signup",
+    "componentPath": "modules/user/pages/signup/index.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [
+      "block w-full pl-10 pr-4 py-3 bg-transparent border-0 text-sm text-gray-900 focus:outline-none focus:ring-0 focus:border-0",
+      "phoneNumber",
+      "referralCode",
+      "placeholder:Enter your name",
+      "placeholder:you@example.com",
+      "placeholder:9876543210",
+      "placeholder:DM-XXXXXX"
+    ],
+    "forms": [
+      "form"
+    ],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [
+      "Close"
+    ],
+    "navigatesTo": [
+      "/user/home",
+      "/user",
+      "/user/login"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Logo",
+      "LogoLoader"
+    ]
+  },
+  "USER_HOME": {
+    "componentName": "Home",
+    "componentPath": "modules/user/pages/Home.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/user/cart",
+      "/user/rewards",
+      "/user/categories",
+      "/user/bookings"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Header",
+      "BottomNav",
+      "SearchBar",
+      "ServiceCategories",
+      "PromoCarousel",
+      "ServiceSectionWithRating",
+      "CategoryModal",
+      "SearchOverlay",
+      "OfferBannerSlider",
+      "GroupCategoryBottomSheet",
+      "LogoLoader",
+      "AddressSelectionModal",
+      "ScrapPromotionCard",
+      "FeaturedSection",
+      "PromoTicker"
+    ]
+  },
+  "USER_CART": {
+    "componentName": "Cart",
+    "componentPath": "modules/user/pages/PremiumCartPage.jsx",
+    "buttons": [
+      "Continue"
+    ],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/user/checkout",
+      "/user/home"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": []
+  },
+  "USER_CHECKOUT": {
+    "componentName": "Checkout",
+    "componentPath": "modules/user/pages/Checkout.jsx",
+    "buttons": [
+      "Remove",
+      "{promoLoading ? 'Applying...' : 'Apply'}"
+    ],
+    "links": [],
+    "inputs": [
+      "w-full p-2.5 border rounded-xl text-sm focus:ring-1 focus:ring-indigo-500 outline-none",
+      "flex-1 p-2.5 border rounded-xl text-sm focus:ring-1 focus:ring-indigo-500 outline-none",
+      "placeholder:Latitude, Longitude coordinates",
+      "placeholder:Enter coupon code (e.g. FLAT50)",
+      "placeholder:Enter name",
+      "placeholder:9999999999"
+    ],
+    "forms": [],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/user/cart",
+      "/user/home",
+      "/user/cancellation-policy"
+    ],
+    "socketEventsListened": [
+      "connect",
+      "connect_error",
+      "new_bid_received",
+      "booking_accepted",
+      "booking_search_failed",
+      "booking_updated"
+    ],
+    "socketEventsEmitted": [
+      "user_wait_request"
+    ],
+    "childComponents": [
+      "AddressSelectionModal",
+      "TimeSlotModal",
+      "VendorSearchModal",
+      "LiveBookingCard"
+    ]
+  },
+  "USER_MY_BOOKINGS": {
+    "componentName": "MyBookings",
+    "componentPath": "modules/user/pages/MyBookings.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/user/booking/${booking._id || booking.id}"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "LoadingSpinner",
+      "NotificationBell"
+    ]
+  },
+  "USER_BOOKING_DETAILS": {
+    "componentName": "BookingDetails",
+    "componentPath": "modules/user/pages/BookingDetails.jsx",
+    "buttons": [
+      "Pay Online Now",
+      "Pay Online Now (Razorpay/UPI)",
+      "Pay at Home (After Service)"
+    ],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/user/my-bookings",
+      "/user/booking/${booking._id || booking.id}/track"
+    ],
+    "socketEventsListened": [
+      "booking_updated",
+      "notification"
+    ],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "RatingModal",
+      "PaymentVerificationModal",
+      "ReviewCard",
+      "NotificationBell"
+    ]
+  },
+  "USER_BOOKING_TRACK": {
+    "componentName": "BookingTrack",
+    "componentPath": "modules/user/pages/BookingTrack.jsx",
+    "buttons": [
+      "Pay Online Now"
+    ],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/user/booking/${booking._id || booking.id}",
+      "/user/booking/${id}"
+    ],
+    "socketEventsListened": [
+      "live_location_update",
+      "booking_updated",
+      "notification"
+    ],
+    "socketEventsEmitted": [
+      "join_tracking"
+    ],
+    "childComponents": [
+      "LogoLoader",
+      "PaymentVerificationModal"
+    ]
+  },
+  "USER_ACCOUNT": {
+    "componentName": "Account",
+    "componentPath": "modules/user/pages/Account.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/user/login",
+      "/user/update-profile",
+      "/user/my-plan",
+      "/user/wallet",
+      "/user/rewards",
+      "/user/my-bookings",
+      "/user/my-rating",
+      "/user/manage-addresses",
+      "/user/settings",
+      "/user/help-support",
+      "/user/about-cleaning-expert"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "LoadingSpinner",
+      "NotificationBell",
+      "Logo"
+    ]
+  },
+  "USER_WALLET": {
+    "componentName": "Wallet",
+    "componentPath": "modules/user/pages/Wallet.jsx",
+    "buttons": [
+      "{claiming ? 'Claiming...' : 'Claim'}"
+    ],
+    "links": [],
+    "inputs": [
+      "placeholder:Enter Code (e.g. GIFT500)"
+    ],
+    "forms": [
+      "form"
+    ],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "LogoLoader",
+      "NotificationBell"
+    ]
+  },
+  "USER_CATEGORY": {
+    "componentName": "CategoryPage",
+    "componentPath": "modules/user/pages/PremiumCategoryPage.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/user/cart"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Navbar",
+      "SearchBar",
+      "SidebarCategory",
+      "ServiceCard",
+      "BottomCheckoutBar"
+    ]
+  },
+  "VEN_LOGIN": {
+    "componentName": "Login",
+    "componentPath": "modules/vendor/pages/login/index.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [
+      "block w-full pl-16 pr-4 py-3.5 bg-transparent border-0 text-sm text-gray-900 focus:outline-none focus:ring-0 focus:border-0",
+      "placeholder:98765 43210"
+    ],
+    "forms": [
+      "form"
+    ],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [
+      "Close"
+    ],
+    "navigatesTo": [
+      "/vendor/pending-approval",
+      "/vendor/verification",
+      "/"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Logo"
+    ]
+  },
+  "VEN_SIGNUP": {
+    "componentName": "Signup",
+    "componentPath": "modules/vendor/pages/signup/index.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [
+      "block w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-offset-2 transition-all duration-300 outline-none hover:border-gray-400",
+      "placeholder:Your Name",
+      "placeholder:9876543210"
+    ],
+    "forms": [
+      "form"
+    ],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/verification",
+      "/vendor/login"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "LogoLoader",
+      "Logo"
+    ]
+  },
+  "VEN_PENDING_APPROVAL": {
+    "componentName": "PendingApproval",
+    "componentPath": "modules/vendor/pages/PendingApproval.jsx",
+    "buttons": [
+      "Back to Login"
+    ],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/dashboard",
+      "/vendor/login"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Logo"
+    ]
+  },
+  "VEN_DASHBOARD": {
+    "componentName": "Dashboard",
+    "componentPath": "modules/vendor/pages/Dashboard.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/profile",
+      "/vendor/jobs",
+      "/vendor/booking/${job.id}"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Header",
+      "LogoLoader",
+      "StatsCards",
+      "PendingBookings"
+    ]
+  },
+  "VEN_BOOKING_ALERTS": {
+    "componentName": "BookingAlerts",
+    "componentPath": "modules/vendor/pages/BookingAlerts.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/dashboard"
+    ],
+    "socketEventsListened": [
+      "booking_taken"
+    ],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Header",
+      "LogoLoader",
+      "PendingJobCard"
+    ]
+  },
+  "VEN_BOOKING_DETAILS": {
+    "componentName": "BookingDetails",
+    "componentPath": "modules/vendor/pages/BookingDetails.jsx",
+    "buttons": [
+      "Approve Work",
+      "Reassign",
+      "Pay Worker",
+      "Close Booking & Finalize",
+      "View Timeline",
+      "Do it Myself",
+      "Start Journey",
+      "{addonLoading ? 'Saving...' : 'Save Add-ons'}"
+    ],
+    "links": [],
+    "inputs": [
+      "w-full bg-white/10 border border-white/20 rounded-2xl py-4 pl-12 pr-4 text-white font-bold placeholder:text-white/40 focus:bg-white/20 focus:border-white/40 outline-none transition-all",
+      "placeholder:Enter total price",
+      "placeholder:e.g. Price includes delivery",
+      "placeholder:Search matching services...",
+      "placeholder:Write a note (e.g. Customer request details)..."
+    ],
+    "forms": [],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/booking/${booking.id || id}/billing",
+      "/vendor/booking/${booking.id}/timeline",
+      "/vendor/booking/${booking.id}/assign-worker",
+      "/vendor/booking/${booking.id || id}/map",
+      "/vendor/booking/${booking.id}/map"
+    ],
+    "socketEventsListened": [
+      "booking_updated",
+      "payment_success"
+    ],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Header",
+      "BottomNav",
+      "VisitVerificationModal",
+      "BillingModal"
+    ]
+  },
+  "VEN_BILLING": {
+    "componentName": "BillingPage",
+    "componentPath": "modules/vendor/pages/BillingPage.jsx",
+    "buttons": [
+      "setViewMode('timeline')}>",
+      "{selected ?  : }",
+      "Add Row",
+      "+ Add Item Row",
+      "Pay in Cash",
+      "{qrLoading ? '...' : 'Online (QR)'}"
+    ],
+    "links": [],
+    "inputs": [
+      "placeholder:Search for a service...",
+      "placeholder:Search for parts...",
+      "placeholder:e.g. Copper Pipe",
+      "placeholder:Optional code",
+      "placeholder:0"
+    ],
+    "forms": [],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/booking/${id}"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": []
+  },
+  "VEN_ASSIGN_WORKER": {
+    "componentName": "AssignWorker",
+    "componentPath": "modules/vendor/pages/AssignWorker.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/booking/${id}",
+      "/vendor/workers/add"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Header",
+      "BottomNav"
+    ]
+  },
+  "VEN_JOBS": {
+    "componentName": "ActiveJobs",
+    "componentPath": "modules/vendor/pages/ActiveJobs.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [
+      "placeholder:Search jobs..."
+    ],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/booking/${job.id}",
+      "/vendor/booking/${job.id}/assign-worker"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Header",
+      "BottomNav",
+      "LogoLoader"
+    ]
+  },
+  "VEN_WORKERS": {
+    "componentName": "WorkersList",
+    "componentPath": "modules/vendor/pages/WorkersList.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [
+      "placeholder:Search workers by name or phone..."
+    ],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/workers/add",
+      "/vendor/workers/${worker.id}/edit"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Header",
+      "BottomNav",
+      "LogoLoader"
+    ]
+  },
+  "VEN_EARNINGS": {
+    "componentName": "Earnings",
+    "componentPath": "modules/vendor/pages/Earnings.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/wallet"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Header",
+      "BottomNav",
+      "LogoLoader"
+    ]
+  },
+  "VEN_WALLET": {
+    "componentName": "Wallet",
+    "componentPath": "modules/vendor/pages/Wallet.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/wallet/withdraw",
+      "/vendor/wallet/settle",
+      "/vendor/wallet/settlements"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Header",
+      "BottomNav",
+      "LogoLoader"
+    ]
+  },
+  "VEN_TRAINING": {
+    "componentName": "Training",
+    "componentPath": "modules/vendor/pages/Training.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/vendor/training/test"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": []
+  },
+  "WRK_LOGIN": {
+    "componentName": "Login",
+    "componentPath": "modules/worker/pages/login/index.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [
+      "phone",
+      "placeholder:9876543210"
+    ],
+    "forms": [
+      "form"
+    ],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Logo",
+      "LogoLoader"
+    ]
+  },
+  "WRK_DASHBOARD": {
+    "componentName": "Dashboard",
+    "componentPath": "modules/worker/pages/Dashboard.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/worker/profile",
+      "/worker/jobs",
+      "/worker/job/${job.id}",
+      "/worker/job/${id}"
+    ],
+    "socketEventsListened": [
+      "notification"
+    ],
+    "socketEventsEmitted": [
+      "set_availability"
+    ],
+    "childComponents": [
+      "Header",
+      "OptimizedImage",
+      "WorkerJobAlertModal",
+      "LogoLoader"
+    ]
+  },
+  "WRK_JOBS": {
+    "componentName": "AssignedJobs",
+    "componentPath": "modules/worker/pages/AssignedJobs.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [
+      "placeholder:Search jobs..."
+    ],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/worker/job/${job._id}"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Header"
+    ]
+  },
+  "WRK_JOB_DETAILS": {
+    "componentName": "JobDetails",
+    "componentPath": "modules/worker/pages/JobDetails.jsx",
+    "buttons": [
+      "Add"
+    ],
+    "links": [],
+    "inputs": [
+      "placeholder:Service Name",
+      "placeholder:Price",
+      "placeholder:Part Name",
+      "placeholder:Notes for customer..."
+    ],
+    "forms": [],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/worker/jobs",
+      "/worker/job/${id}/billing",
+      "/worker/job/${id}/map",
+      "/worker/job/${id}/timeline"
+    ],
+    "socketEventsListened": [
+      "booking_updated",
+      "payment_success"
+    ],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "Header"
+    ]
+  },
+  "WRK_JOB_MAP": {
+    "componentName": "JobMap",
+    "componentPath": "modules/worker/pages/JobMap.jsx",
+    "buttons": [
+      "{isSimulating ? '⏹ Stop' : '🚀 Simulate'}"
+    ],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/worker/job/${id}"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [
+      "join_tracking",
+      "update_location"
+    ],
+    "childComponents": [
+      "VisitVerificationModal"
+    ]
+  },
+  "ADM_LOGIN": {
+    "componentName": "Login",
+    "componentPath": "modules/admin/pages/login/index.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [
+      "w-full pl-12 pr-4 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900",
+      "w-full pl-12 pr-12 py-3 border-2 border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:border-transparent text-gray-900",
+      "placeholder:admin@admin.com",
+      "placeholder:Enter your password"
+    ],
+    "forms": [
+      "form"
+    ],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/admin/dashboard"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": []
+  },
+  "ADM_DASHBOARD": {
+    "componentName": "Dashboard",
+    "componentPath": "modules/admin/pages/Dashboard.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/admin/bookings/${booking._id || booking.id}"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "RevenueLineChart",
+      "BookingsBarChart",
+      "BookingStatusPieChart",
+      "PaymentBreakdownPieChart",
+      "RevenueVsBookingsChart",
+      "TimePeriodFilter",
+      "CustomerGrowthAreaChart",
+      "TopServices",
+      "RecentBookings"
+    ]
+  },
+  "ADM_BOOKINGS": {
+    "componentName": "Bookings",
+    "componentPath": "modules/admin/pages/Bookings.jsx",
+    "buttons": [
+      "Export"
+    ],
+    "links": [],
+    "inputs": [
+      "placeholder:Search bookings..."
+    ],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/admin/bookings/${booking._id}"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": []
+  },
+  "ADM_BOOKING_DETAILS": {
+    "componentName": "BookingDetails",
+    "componentPath": "modules/admin/pages/Bookings/BookingDetails.jsx",
+    "buttons": [
+      "Approve Cancellation",
+      "Reject Request",
+      "{cancelling ? 'Cancelling...' : 'Yes, Cancel'}"
+    ],
+    "links": [],
+    "inputs": [
+      "placeholder:Explain the reason for cancellation...",
+      "placeholder:Search vendor by name, business or phone..."
+    ],
+    "forms": [],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/admin/bookings"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": []
+  },
+  "ADM_USERS": {
+    "componentName": "Users",
+    "componentPath": "modules/admin/pages/Users.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "React",
+      "AllUsers",
+      "UserBookings",
+      "UserAnalytics",
+      "ReferralSettings"
+    ]
+  },
+  "ADM_VENDORS": {
+    "componentName": "Vendors",
+    "componentPath": "modules/admin/pages/Vendors.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [],
+    "forms": [],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "React",
+      "AllVendors",
+      "VendorBookings",
+      "VendorAnalytics",
+      "IncentivesPage",
+      "VendorsZone",
+      "ManualAssignment"
+    ]
+  },
+  "ADM_POLICE_VERIF": {
+    "componentName": "PoliceVerification",
+    "componentPath": "modules/admin/pages/PoliceVerification.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [
+      "placeholder:Please provide a reason for rejection..."
+    ],
+    "forms": [],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "LogoLoader",
+      "Modal"
+    ]
+  },
+  "ADM_SOS": {
+    "componentName": "SOSAlerts",
+    "componentPath": "modules/admin/pages/SOSAlerts.jsx",
+    "buttons": [],
+    "links": [],
+    "inputs": [
+      "placeholder:Search by details...",
+      "placeholder:Enter what actions were taken (e.g. contacted customer/vendor, called local police desk)..."
+    ],
+    "forms": [
+      "form"
+    ],
+    "modals": [
+      "Modal"
+    ],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": []
+  },
+  "ADM_SETTINGS": {
+    "componentName": "Settings",
+    "componentPath": "modules/admin/pages/Settings.jsx",
+    "buttons": [
+      "Remove"
+    ],
+    "links": [],
+    "inputs": [
+      "w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all",
+      "w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg outline-none focus:border-blue-500 transition-all",
+      "w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg outline-none focus:border-green-500 transition-all font-bold text-gray-800",
+      "w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-indigo-500",
+      "w-full px-3 py-2 text-sm border border-gray-200 rounded-lg outline-none focus:border-indigo-500 uppercase",
+      "mcqTimeLimitMinutes",
+      "w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg outline-none focus:border-blue-500 transition-all",
+      "hidden",
+      "placeholder:Current Password",
+      "placeholder:New Password",
+      "placeholder:Confirm New Password",
+      "placeholder:e.g. 9999999999, 8888888888",
+      "placeholder:Full Name",
+      "placeholder:Email Address"
+    ],
+    "forms": [
+      "form"
+    ],
+    "modals": [],
+    "dataTestIds": [],
+    "ariaLabels": [],
+    "navigatesTo": [
+      "/admin/sos-alerts"
+    ],
+    "socketEventsListened": [],
+    "socketEventsEmitted": [],
+    "childComponents": [
+      "CityManagement"
+    ]
+  }
+}

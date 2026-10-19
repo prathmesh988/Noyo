@@ -1,0 +1,25 @@
+{
+  "routeId": "ADM_SOS",
+  "portal": "admin",
+  "path": "/admin/sos-alerts",
+  "requiredRole": "admin",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/admin/sos-alerts",
+      "expectedVisibleResult": "Page loaded at /admin/sos-alerts",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

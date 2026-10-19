@@ -1,0 +1,34 @@
+{
+  "routeId": "WRK_JOB_MAP",
+  "portal": "worker",
+  "path": "/worker/job/:id/map",
+  "requiredRole": "worker",
+  "preconditions": "Requires transit job ID",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/worker/job/:id/map",
+      "expectedVisibleResult": "Page loaded at /worker/job/:id/map",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 2,
+      "action": "click",
+      "locatorHint": "button:has-text(\"{isSimulating ? '⏹ Stop' : '🚀 Simulate'}\")",
+      "expectedVisibleResult": "Button {isSimulating ? '⏹ Stop' : '🚀 Simulate'} clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

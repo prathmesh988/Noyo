@@ -1,0 +1,34 @@
+{
+  "routeId": "WRK_JOB_DETAILS",
+  "portal": "worker",
+  "path": "/worker/job/:id",
+  "requiredRole": "worker",
+  "preconditions": "Requires assigned job ID",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/worker/job/:id",
+      "expectedVisibleResult": "Page loaded at /worker/job/:id",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 2,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Add\")",
+      "expectedVisibleResult": "Button Add clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

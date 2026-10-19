@@ -1,0 +1,50 @@
+{
+  "routeId": "USER_BOOKING_DETAILS",
+  "portal": "user",
+  "path": "/user/booking/:id",
+  "requiredRole": "user",
+  "preconditions": "Requires valid customer booking ID",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/user/booking/:id",
+      "expectedVisibleResult": "Page loaded at /user/booking/:id",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 2,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Pay Online Now\")",
+      "expectedVisibleResult": "Button Pay Online Now clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 3,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Pay Online Now (Razorpay/UPI)\")",
+      "expectedVisibleResult": "Button Pay Online Now (Razorpay/UPI) clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 4,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Pay at Home (After Service)\")",
+      "expectedVisibleResult": "Button Pay at Home (After Service) clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

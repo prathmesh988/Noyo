@@ -41,20 +41,20 @@ const Rewards = () => {
   }, []);
 
   const handleCopyLink = () => {
-    const referralLink = `https://Doormeets.in/user/signup?referral=${referralData.referralCode}`;
+    const referralLink = `https://noyo.in/user/signup?referral=${referralData.referralCode}`;
     navigator.clipboard.writeText(referralLink).then(() => {
       toast.success('Link copied to clipboard!');
     });
   };
 
   const handleShareWhatsApp = () => {
-    const text = `Join Door Meets using my referral code ${referralData.referralCode} and get ₹${referralData.refereeReward} welcome reward in your wallet!`;
-    const url = `https://Doormeets.in/user/signup?referral=${referralData.referralCode}`;
+    const text = `Join Noyo using my referral code ${referralData.referralCode} and get ₹${referralData.refereeReward} welcome reward in your wallet!`;
+    const url = `https://noyo.in/user/signup?referral=${referralData.referralCode}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(text + ' ' + url)}`, '_blank');
   };
 
   const handleShareMessenger = () => {
-    const url = `https://Doormeets.in/user/signup?referral=${referralData.referralCode}`;
+    const url = `https://noyo.in/user/signup?referral=${referralData.referralCode}`;
     window.open(`https://www.facebook.com/dialog/send?link=${encodeURIComponent(url)}&app_id=your-app-id`, '_blank');
   };
 

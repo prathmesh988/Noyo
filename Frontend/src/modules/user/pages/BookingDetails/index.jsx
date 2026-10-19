@@ -64,7 +64,7 @@ const BookingDetails = () => {
   });
 
   const [supportInfo, setSupportInfo] = useState({
-    email: 'support@doormeets.com',
+    email: 'support@noyo.in',
     phone: ''
   });
 
@@ -99,14 +99,14 @@ const BookingDetails = () => {
         if (response.data?.success && response.data?.settings) {
           const { supportEmail, supportPhone } = response.data.settings;
           setSupportInfo({
-            email: supportEmail || 'help@doormeets.com',
+            email: supportEmail || 'help@noyo.in',
             phone: supportPhone || '+919999999999'
           });
         }
       } catch (error) {
         console.error('Failed to fetch support settings:', error);
         setSupportInfo({
-          email: 'help@doormeets.com',
+          email: 'help@noyo.in',
           phone: '+919999999999'
         });
       }
@@ -390,7 +390,7 @@ const BookingDetails = () => {
         amount: Math.round((booking.finalAmount || 0) * 100),
         currency: 'INR',
         order_id: booking.razorpayOrderId,
-        name: 'Doormeets',
+        name: 'Noyo',
         description: `Payment for ${booking.serviceName}`,
         handler: async function (response) {
           toast.loading('Verifying payment...');
@@ -440,7 +440,7 @@ const BookingDetails = () => {
         amount: Math.round(orderResponse.data.amount * 100),
         currency: orderResponse.data.currency || 'INR',
         order_id: orderResponse.data.orderId,
-        name: 'Doormeets',
+        name: 'Noyo',
         description: `Payment for ${booking.serviceName}`,
         handler: async function (response) {
           toast.loading('Verifying payment...');
@@ -1551,7 +1551,7 @@ const BookingDetails = () => {
                   <div key={inv._id} className="flex justify-between items-center bg-light-bg rounded-xl p-3 border border-border-color">
                     <div className="flex flex-col min-w-0 font-medium">
                       <span className="text-xs font-bold text-dark-text truncate">
-                        {inv.type === 'vendor_service' ? 'Service Bill (from Professional)' : 'Platform Receipt (from Doormeets)'}
+                        {inv.type === 'vendor_service' ? 'Service Bill (from Professional)' : 'Platform Receipt (from Noyo)'}
                       </span>
                       <span className="text-[10px] text-secondary-text font-mono mt-0.5">{inv.invoiceNumber} • ₹{inv.totalAmount}</span>
                     </div>
@@ -1691,7 +1691,7 @@ const BookingDetails = () => {
             </button>
             <button
               onClick={() => {
-                const email = supportInfo.email || 'help@doormeets.com';
+                const email = supportInfo.email || 'help@noyo.in';
                 const link = document.createElement('a');
                 link.href = `mailto:${email}`;
                 document.body.appendChild(link);

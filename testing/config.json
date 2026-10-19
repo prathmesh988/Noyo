@@ -1,0 +1,31 @@
+{
+  "modelName": "gemini-2.5-flash",
+  "frontendUrl": "http://localhost:5173",
+  "backendUrl": "http://localhost:5001",
+  "socketUrl": "http://localhost:5001",
+  "timers": {
+    "shortWaveDurationSeconds": 10,
+    "shortMaxSearchTimeMinutes": 1,
+    "defaultWaveDurationSeconds": 60,
+    "defaultMaxSearchTimeMinutes": 10,
+    "activeIntervalMs": 5000
+  },
+  "requestBudget": 100,
+  "allowedRiskFlags": [],
+  "emulation": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "deviceScaleFactor": 3,
+    "isMobile": true,
+    "hasTouch": true,
+    "locale": "en-IN",
+    "timezoneId": "Asia/Kolkata",
+    "geolocation": {
+      "latitude": 18.5204,
+      "longitude": 73.8567
+    },
+    "permissions": ["geolocation"]
+  }
+}

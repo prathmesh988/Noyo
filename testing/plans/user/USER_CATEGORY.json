@@ -1,0 +1,26 @@
+{
+  "routeId": "USER_CATEGORY",
+  "portal": "user",
+  "path": "/user/category/:slug",
+  "requiredRole": "user",
+  "preconditions": "Requires seeded category slug",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/user/category/:slug",
+      "expectedVisibleResult": "Page loaded at /user/category/:slug",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

@@ -1,0 +1,25 @@
+{
+  "routeId": "USER_SIGNUP",
+  "portal": "user",
+  "path": "/user/signup",
+  "requiredRole": "public",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/user/signup",
+      "expectedVisibleResult": "Page loaded at /user/signup",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

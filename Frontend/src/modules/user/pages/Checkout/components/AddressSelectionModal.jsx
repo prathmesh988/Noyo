@@ -196,7 +196,7 @@ const AddressSelectionModal = ({ isOpen, onClose, address = '', houseNumber = ''
                 <FiHome className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4 z-10" />
                 <input
                   type="text"
-                  placeholder="e.g. Flat 101, Doormeets Tower"
+                  placeholder="e.g. Flat 101, Noyo Tower"
                   value={houseNumber}
                   onChange={(e) => onHouseNumberChange(e.target.value)}
                   className="w-full pl-9 pr-4 py-3 border rounded-xl text-sm focus:ring-1 focus:ring-primary-500 transition-all font-medium"

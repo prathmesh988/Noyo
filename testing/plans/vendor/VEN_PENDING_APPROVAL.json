@@ -1,0 +1,33 @@
+{
+  "routeId": "VEN_PENDING_APPROVAL",
+  "portal": "vendor",
+  "path": "/vendor/pending-approval",
+  "requiredRole": "vendor",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/vendor/pending-approval",
+      "expectedVisibleResult": "Page loaded at /vendor/pending-approval",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 2,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Back to Login\")",
+      "expectedVisibleResult": "Button Back to Login clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

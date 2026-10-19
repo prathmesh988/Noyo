@@ -285,7 +285,8 @@ const AllVendors = () => {
               placeholder="Search vendors..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all text-xs"
+              className="w-full pl-9 pr-3 py-2 bg-white text-gray-900 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500/20 focus:border-green-500 transition-all text-xs"
+              style={{ color: '#111827', backgroundColor: '#ffffff' }}
             />
           </div>
           <div className="flex gap-1.5 overflow-x-auto pb-1 sm:pb-0">
@@ -647,111 +648,153 @@ const AllVendors = () => {
 
           {/* Vendor Level Selection */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-1">Vendor Level</label>
-            <select
-              value={editFormData.currentLevel}
-              onChange={(e) => setEditFormData(prev => ({ ...prev, currentLevel: e.target.value }))}
-              className="w-full px-3 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-xs font-semibold"
-            >
-              <option value="L1">Level 1 — Premium / Expert (80%+ Rating)</option>
-              <option value="L2">Level 2 — Standard / Professional (50-80% Rating)</option>
-              <option value="L3">Level 3 — Basic / Beginner (Under 50% Rating)</option>
-            </select>
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="block text-sm font-bold text-gray-800">Vendor Level</label>
+              <span className={`px-2 py-0.5 rounded-md text-[11px] font-bold uppercase tracking-wider ${
+                editFormData.currentLevel === 'L1' ? 'bg-amber-100 text-amber-800 border border-amber-300' :
+                editFormData.currentLevel === 'L2' ? 'bg-blue-100 text-blue-800 border border-blue-300' :
+                'bg-emerald-100 text-emerald-800 border border-emerald-300'
+              }`}>
+                {editFormData.currentLevel === 'L1' ? 'L1 — Premium' : editFormData.currentLevel === 'L2' ? 'L2 — Standard' : 'L3 — Basic'}
+              </span>
+            </div>
+            <div className="relative">
+              <select
+                value={editFormData.currentLevel}
+                onChange={(e) => setEditFormData(prev => ({ ...prev, currentLevel: e.target.value }))}
+                className="w-full px-3.5 py-2.5 bg-white text-gray-900 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-xs font-semibold cursor-pointer appearance-none pr-9 shadow-sm"
+                style={{ color: '#111827', backgroundColor: '#ffffff', colorScheme: 'light' }}
+              >
+                <option value="L1" className="bg-white text-gray-900 py-1" style={{ color: '#111827', backgroundColor: '#ffffff' }}>Level 1 — Premium / Expert (80%+ Rating)</option>
+                <option value="L2" className="bg-white text-gray-900 py-1" style={{ color: '#111827', backgroundColor: '#ffffff' }}>Level 2 — Standard / Professional (50-80% Rating)</option>
+                <option value="L3" className="bg-white text-gray-900 py-1" style={{ color: '#111827', backgroundColor: '#ffffff' }}>Level 3 — Basic / Beginner (Under 50% Rating)</option>
+              </select>
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500">
+                <FiChevronDown className="w-4 h-4 text-gray-600" />
+              </div>
+            </div>
             <p className="text-xs text-gray-500 mt-1">Directly upgrades/downgrades vendor ranking level manually.</p>
           </div>
 
           {/* Categories */}
           <div>
-            <label className="block text-sm font-semibold text-gray-700 mb-3">Allowed Categories</label>
-            <div className="space-y-2 max-h-80 overflow-y-auto p-2 border border-gray-100 rounded-lg">
-              {categories.map(category => (
-                <div key={category.id} className="border border-gray-50 rounded-lg overflow-hidden">
-                  <div className="flex items-center justify-between p-2 hover:bg-gray-50 transition-colors">
-                    <label className="flex items-center gap-2 cursor-pointer flex-1">
-                      <input
-                        type="checkbox"
-                        checked={editFormData.service.includes(category.title)}
-                        onChange={(e) => {
-                          if (e.target.checked) {
-                            setEditFormData(prev => ({ ...prev, service: [...prev.service, category.title] }));
-                          } else {
-                            setEditFormData(prev => ({ ...prev, service: prev.service.filter(s => s !== category.title) }));
-                          }
-                        }}
-                        className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
-                      />
-                      <span className="text-sm font-semibold text-gray-800">{category.title}</span>
-                    </label>
-                    <button 
-                      onClick={() => handleExpandCategory(category.id)}
-                      className="p-1.5 text-gray-500 hover:bg-gray-100 rounded-lg"
-                    >
-                      {expandedCategory === category.id ? <FiChevronUp /> : <FiChevronDown />}
-                    </button>
-                  </div>
-
-                  {/* Subcategories and Brands */}
-                  {expandedCategory === category.id && (
-                    <div className="pl-6 pr-2 pb-3 bg-gray-50/50 space-y-4 border-t border-gray-50 pt-2">
-                      {/* SubCategories */}
-                      <div>
-                        <p className="text-xs font-semibold text-gray-500 mb-2">Sub Categories</p>
-                        <div className="space-y-1.5 pl-2">
-                          {(subCategoriesData[category.id] || []).map(subCat => (
-                            <label key={subCat._id} className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-gray-900">
-                              <input
-                                type="checkbox"
-                                checked={editFormData.subCategories.includes(subCat.title)}
-                                onChange={(e) => {
-                                  if (e.target.checked) {
-                                    setEditFormData(prev => ({ ...prev, subCategories: [...prev.subCategories, subCat.title] }));
-                                  } else {
-                                    setEditFormData(prev => ({ ...prev, subCategories: prev.subCategories.filter(s => s !== subCat.title) }));
-                                  }
-                                }}
-                                className="w-3.5 h-3.5 text-blue-500 rounded border-gray-300 focus:ring-blue-500"
-                              />
-                              {subCat.title}
-                            </label>
-                          ))}
-                          {(!subCategoriesData[category.id] || subCategoriesData[category.id].length === 0) && (
-                            <p className="text-xs text-gray-400 italic">No subcategories found.</p>
-                          )}
-                        </div>
-                      </div>
-
-                      {/* Brands */}
-                      <div>
-                        <p className="text-xs font-semibold text-gray-500 mb-2">Brands</p>
-                        <div className="space-y-1.5 pl-2">
-                          {(brandsData[category.id] || []).map(brand => (
-                            <label key={brand._id} className="flex items-center gap-2 cursor-pointer text-sm text-gray-700 hover:text-gray-900">
-                              <input
-                                type="checkbox"
-                                checked={editFormData.brands.includes(brand.title)}
-                                onChange={(e) => {
-                                  if (e.target.checked) {
-                                    setEditFormData(prev => ({ ...prev, brands: [...prev.brands, brand.title] }));
-                                  } else {
-                                    setEditFormData(prev => ({ ...prev, brands: prev.brands.filter(b => b !== brand.title) }));
-                                  }
-                                }}
-                                className="w-3.5 h-3.5 text-blue-500 rounded border-gray-300 focus:ring-blue-500"
-                              />
-                              {brand.title}
-                            </label>
-                          ))}
-                          {(!brandsData[category.id] || brandsData[category.id].length === 0) && (
-                            <p className="text-xs text-gray-400 italic">No brands found.</p>
-                          )}
-                        </div>
-                      </div>
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-sm font-bold text-gray-800">Allowed Categories</label>
+              <span className="text-xs text-gray-500 font-medium">
+                {editFormData.service.length} selected
+              </span>
+            </div>
+            <div className="space-y-2 max-h-80 overflow-y-auto p-2 border border-gray-200 rounded-xl bg-gray-50/50">
+              {categories.map(category => {
+                const isSelected = editFormData.service.includes(category.title);
+                return (
+                  <div
+                    key={category.id}
+                    className={`border rounded-xl overflow-hidden transition-all ${
+                      isSelected ? 'border-blue-300 bg-blue-50/50 shadow-sm' : 'border-gray-200 bg-white hover:bg-gray-50'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between p-2.5">
+                      <label className="flex items-center gap-2.5 cursor-pointer flex-1 select-none">
+                        <input
+                          type="checkbox"
+                          checked={isSelected}
+                          onChange={(e) => {
+                            if (e.target.checked) {
+                              setEditFormData(prev => ({ ...prev, service: [...prev.service, category.title] }));
+                            } else {
+                              setEditFormData(prev => ({ ...prev, service: prev.service.filter(s => s !== category.title) }));
+                            }
+                          }}
+                          className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 cursor-pointer"
+                        />
+                        <span className={`text-sm ${isSelected ? 'font-bold text-blue-950' : 'font-semibold text-gray-800'}`}>
+                          {category.title}
+                        </span>
+                      </label>
+                      <button 
+                        type="button"
+                        onClick={() => handleExpandCategory(category.id)}
+                        className="p-1.5 text-gray-500 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
+                        title={expandedCategory === category.id ? "Collapse" : "Expand"}
+                      >
+                        {expandedCategory === category.id ? <FiChevronUp className="w-4 h-4 text-gray-700" /> : <FiChevronDown className="w-4 h-4 text-gray-700" />}
+                      </button>
                     </div>
-                  )}
-                </div>
-              ))}
+
+                    {/* Subcategories and Brands */}
+                    {expandedCategory === category.id && (
+                      <div className="pl-6 pr-3 pb-3 bg-white space-y-4 border-t border-gray-100 pt-2.5">
+                        {/* SubCategories */}
+                        <div>
+                          <p className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Sub Categories</p>
+                          <div className="space-y-2 pl-1">
+                            {(subCategoriesData[category.id] || []).map(subCat => {
+                              const isSubSelected = editFormData.subCategories.includes(subCat.title);
+                              return (
+                                <label key={subCat._id} className="flex items-center gap-2.5 cursor-pointer text-sm text-gray-800 hover:text-gray-950 select-none">
+                                  <input
+                                    type="checkbox"
+                                    checked={isSubSelected}
+                                    onChange={(e) => {
+                                      if (e.target.checked) {
+                                        setEditFormData(prev => ({ ...prev, subCategories: [...prev.subCategories, subCat.title] }));
+                                      } else {
+                                        setEditFormData(prev => ({ ...prev, subCategories: prev.subCategories.filter(s => s !== subCat.title) }));
+                                      }
+                                    }}
+                                    className="w-3.5 h-3.5 text-blue-600 rounded border-gray-300 focus:ring-blue-500 cursor-pointer"
+                                  />
+                                  <span className={`text-xs ${isSubSelected ? 'font-semibold text-gray-900' : 'text-gray-700'}`}>
+                                    {subCat.title}
+                                  </span>
+                                </label>
+                              );
+                            })}
+                            {(!subCategoriesData[category.id] || subCategoriesData[category.id].length === 0) && (
+                              <p className="text-xs text-gray-400 italic">No subcategories found.</p>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Brands */}
+                        <div>
+                          <p className="text-xs font-bold text-gray-600 uppercase tracking-wider mb-2">Brands</p>
+                          <div className="space-y-2 pl-1">
+                            {(brandsData[category.id] || []).map(brand => {
+                              const isBrandSelected = editFormData.brands.includes(brand.title);
+                              return (
+                                <label key={brand._id} className="flex items-center gap-2.5 cursor-pointer text-sm text-gray-800 hover:text-gray-950 select-none">
+                                  <input
+                                    type="checkbox"
+                                    checked={isBrandSelected}
+                                    onChange={(e) => {
+                                      if (e.target.checked) {
+                                        setEditFormData(prev => ({ ...prev, brands: [...prev.brands, brand.title] }));
+                                      } else {
+                                        setEditFormData(prev => ({ ...prev, brands: prev.brands.filter(b => b !== brand.title) }));
+                                      }
+                                    }}
+                                    className="w-3.5 h-3.5 text-blue-600 rounded border-gray-300 focus:ring-blue-500 cursor-pointer"
+                                  />
+                                  <span className={`text-xs ${isBrandSelected ? 'font-semibold text-gray-900' : 'text-gray-700'}`}>
+                                    {brand.title}
+                                  </span>
+                                </label>
+                              );
+                            })}
+                            {(!brandsData[category.id] || brandsData[category.id].length === 0) && (
+                              <p className="text-xs text-gray-400 italic">No brands found.</p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
               {categories.length === 0 && (
-                <p className="text-xs text-gray-500">No categories found.</p>
+                <p className="text-xs text-gray-500 p-2">No categories found.</p>
               )}
             </div>
             <p className="text-xs text-gray-500 mt-2">Select which categories this vendor is allowed to see and work in.</p>

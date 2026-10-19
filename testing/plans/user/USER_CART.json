@@ -1,0 +1,33 @@
+{
+  "routeId": "USER_CART",
+  "portal": "user",
+  "path": "/user/cart",
+  "requiredRole": "user",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/user/cart",
+      "expectedVisibleResult": "Page loaded at /user/cart",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 2,
+      "action": "click",
+      "locatorHint": "button:has-text(\"Continue\")",
+      "expectedVisibleResult": "Button Continue clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

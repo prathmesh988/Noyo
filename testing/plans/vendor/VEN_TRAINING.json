@@ -1,0 +1,25 @@
+{
+  "routeId": "VEN_TRAINING",
+  "portal": "vendor",
+  "path": "/vendor/training",
+  "requiredRole": "vendor",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/vendor/training",
+      "expectedVisibleResult": "Page loaded at /vendor/training",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

@@ -92,7 +92,7 @@ const AboutDoormeets = () => {
           >
             <FiArrowLeft className="w-5 h-5 text-gray-700" />
           </button>
-          <span className="text-xl font-semibold" style={doormeetsTextGradient}>About Doormeets</span>
+          <span className="text-xl font-semibold" style={doormeetsTextGradient}>About Noyo</span>
         </div>
       </header>
       <div className="h-[74px]" />
@@ -116,7 +116,7 @@ const AboutDoormeets = () => {
           </div>
 
           <h1 className="text-3xl font-semibold text-gray-900 mb-2">
-            Welcome to <span style={doormeetsTextGradient}>Doormeets</span>
+            Welcome to <span style={doormeetsTextGradient}>Noyo Partner</span>
           </h1>
           <p className="text-gray-500 max-w-xs mx-auto leading-relaxed text-sm">
             Your trusted partner for premium home and personal care services.
@@ -145,14 +145,14 @@ const AboutDoormeets = () => {
             </div>
             <h3 className="text-lg font-semibold text-gray-800 mb-3">Our Mission</h3>
             <p className="text-sm text-gray-600 leading-relaxed relative z-10 font-medium">
-              Doormeets is dedicated to revolutionizing how you experience home services. We connect you with top-tier professionals to deliver safe, reliable, and high-quality services right at your doorstep. We believe in making life simpler, one service at a time.
+              Noyo Partner empowers service businesses with enterprise-grade dispatch, customer management, and worker operations. Platform engineered by Appzeto Technologies.
             </p>
           </div>
         </motion.div>
 
         {/* Why Choose Us Grid */}
         <motion.div variants={itemVariants}>
-          <h3 className="text-lg font-semibold text-gray-800 mb-4 px-1">Why Choose Doormeets?</h3>
+          <h3 className="text-lg font-semibold text-gray-800 mb-4 px-1">Why Partner with Noyo?</h3>
           <div className="grid grid-cols-2 gap-3">
             {features.map((feature, index) => (
               <div
@@ -195,9 +195,9 @@ const AboutDoormeets = () => {
 
         {/* Footer Info */}
         <motion.div variants={itemVariants} className="text-center pt-4 border-t border-gray-200">
-          <p className="text-xs text-gray-400 mb-1 font-medium">Designed & Developed by</p>
-          <span className="text-sm font-semibold tracking-wide" style={doormeetsTextGradient}>Doormeets Team</span>
-          <p className="text-[10px] text-gray-300 mt-4">v7.6.27 • Made with ❤️ in India</p>
+          <p className="text-xs text-gray-400 mb-1 font-medium">Platform Powered by</p>
+          <span className="text-sm font-semibold tracking-wide" style={doormeetsTextGradient}>Appzeto Technologies</span>
+          <p className="text-[10px] text-gray-300 mt-4">Noyo Partner • Powered by Appzeto</p>
         </motion.div>
       </main>
 

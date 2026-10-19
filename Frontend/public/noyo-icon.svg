@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <defs>
+    <linearGradient id="noyoIconGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B33A35" />
+      <stop offset="100%" stop-color="#9E2E2A" />
+    </linearGradient>
+    <filter id="iconShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#B33A35" flood-opacity="0.3" />
+    </filter>
+  </defs>
+  <g filter="url(#iconShadow)">
+    <rect x="6" y="6" width="68" height="68" rx="20" fill="url(#noyoIconGrad)" />
+    <!-- Modern 'N' Shape -->
+    <path d="M25 54V26C25 24.3431 26.3431 23 28 23H29.5C31.2 23 32.8 23.9 33.7 25.4L45.3 43.6C45.8 44.4 47 44.0 47 43.1V26C47 24.3431 48.3431 23 50 23C51.6569 23 53 24.3431 53 26V54C53 55.6569 51.6569 57 50 57H48.5C46.8 57 45.2 56.1 44.3 54.6L32.7 36.4C32.2 35.6 31 36.0 31 36.9V54C31 55.6569 29.6569 57 28 57C26.3431 57 25 55.6569 25 54Z" fill="#FFFFFF" />
+    <circle cx="51" cy="23" r="3.5" fill="#FFC371" />
+  </g>
+</svg>

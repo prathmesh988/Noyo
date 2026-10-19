@@ -1,0 +1,33 @@
+{
+  "routeId": "USER_WALLET",
+  "portal": "user",
+  "path": "/user/wallet",
+  "requiredRole": "user",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/user/wallet",
+      "expectedVisibleResult": "Page loaded at /user/wallet",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    },
+    {
+      "order": 2,
+      "action": "click",
+      "locatorHint": "button:has-text(\"{claiming ? 'Claiming...' : 'Claim'}\")",
+      "expectedVisibleResult": "Button {claiming ? 'Claiming...' : 'Claim'} clicked without crash",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

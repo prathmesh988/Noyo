@@ -1,0 +1,25 @@
+{
+  "routeId": "USER_MY_BOOKINGS",
+  "portal": "user",
+  "path": "/user/my-bookings",
+  "requiredRole": "user",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/user/my-bookings",
+      "expectedVisibleResult": "Page loaded at /user/my-bookings",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}

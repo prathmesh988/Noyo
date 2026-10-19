@@ -1,0 +1,25 @@
+{
+  "routeId": "VEN_WALLET",
+  "portal": "vendor",
+  "path": "/vendor/wallet",
+  "requiredRole": "vendor",
+  "steps": [
+    {
+      "order": 1,
+      "action": "navigate",
+      "locatorHint": "/vendor/wallet",
+      "expectedVisibleResult": "Page loaded at /vendor/wallet",
+      "riskFlags": [],
+      "source": "llm-inferred"
+    }
+  ],
+  "negativeCases": [
+    "Empty form submission validation",
+    "Rapid double click resilience"
+  ],
+  "uiChecks": [
+    "Loading spinner dismissal",
+    "Responsive layout without horizontal overflow"
+  ],
+  "source": "llm-inferred"
+}
