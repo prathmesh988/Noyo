@@ -113,7 +113,7 @@ const ActiveJobs = memo(() => {
           }
         } catch (error) {
           console.error("Error assigning to self:", error);
-          toast.error("Failed to assign to yourself");
+          toast.error(error.response?.data?.message || "Failed to assign to yourself");
         }
       }
     });
