@@ -615,7 +615,47 @@ const updateVendor = async (req, res) => {
     }
     
     if (service !== undefined) {
-      vendor.service = Array.isArray(service) ? service : [service];
+      const serviceArray = Array.isArray(service) ? service : [service];
+      vendor.service = serviceArray;
+
+      // Sync categories field: booking matching queries vendor.categories, so keep it in sync
+      // with title strings + matching category ObjectIds, plus expand any mappedCategories for group categories
+      try {
+        const Category = require('../../models/Category');
+        const allCategories = await Category.find({}).select('_id title isGroupCategory mappedCategories').lean();
+        const categoryByTitle = {};
+        const categoryById = {};
+        allCategories.forEach(c => { 
+          categoryByTitle[c.title.toLowerCase().trim()] = c;
+          categoryById[c._id.toString()] = c;
+        });
+
+        const syncedCategories = new Set();
+        for (const svc of serviceArray) {
+          const trimmed = svc.trim();
+          syncedCategories.add(trimmed);
+          const cat = categoryByTitle[trimmed.toLowerCase()];
+          if (cat) {
+            syncedCategories.add(cat._id.toString());
+            // Expand mapped categories for group categories (e.g. Cleaning Service -> Home Cleaning, Tank Cleaning)
+            if (Array.isArray(cat.mappedCategories)) {
+              for (const childId of cat.mappedCategories) {
+                const childIdStr = childId.toString();
+                syncedCategories.add(childIdStr);
+                const childDoc = categoryById[childIdStr];
+                if (childDoc && childDoc.title) {
+                  syncedCategories.add(childDoc.title.trim());
+                }
+              }
+            }
+          }
+        }
+        vendor.categories = Array.from(syncedCategories);
+      } catch (catSyncErr) {
+        // Fallback: at minimum sync title strings so search still works
+        console.error('[updateVendor] Category sync error:', catSyncErr.message);
+        vendor.categories = serviceArray;
+      }
     }
 
     if (subCategories !== undefined) {

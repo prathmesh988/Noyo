@@ -47,7 +47,9 @@ export default function GlobalBookingAlert() {
               const existingIds = new Set(pendingJobs.map(j => String(j.id || j._id)));
               let updated = false;
               serverJobs.forEach(sj => {
-                if (!existingIds.has(String(sj.id))) {
+                const sjId = String(sj.id);
+                // Never re-add jobs that were dismissed/accepted this session
+                if (!existingIds.has(sjId) && !ignoredBookingIds.current.has(sjId)) {
                   pendingJobs.unshift(sj);
                   updated = true;
                 }
@@ -58,9 +60,20 @@ export default function GlobalBookingAlert() {
         }
 
         const validJobs = pendingJobs.filter(job => {
-          if (!job.expiresAt) return true;
-          return new Date(job.expiresAt).getTime() > now;
+          const jobId = String(job.id || job._id);
+          // Skip jobs dismissed/accepted in this session
+          if (ignoredBookingIds.current.has(jobId)) return false;
+          // Skip expired jobs; jobs with no expiresAt are treated as valid (missed alerts)
+          if (job.expiresAt && new Date(job.expiresAt).getTime() <= now) return false;
+          return true;
         });
+
+        // Clean up localStorage - remove expired/ignored entries to prevent stale re-population
+        const validIds = new Set(validJobs.map(j => String(j.id || j._id)));
+        const cleanedJobs = pendingJobs.filter(j => validIds.has(String(j.id || j._id)));
+        if (cleanedJobs.length !== pendingJobs.length) {
+          localStorage.setItem('vendorPendingJobs', JSON.stringify(cleanedJobs));
+        }
 
         if (validJobs.length > 0) {
           setActiveAlertBookings(prev => {
@@ -121,6 +134,10 @@ export default function GlobalBookingAlert() {
         const idToRemove = String(e.detail.id);
         ignoredBookingIds.current.add(idToRemove);
         setActiveAlertBookings(prev => prev.filter(b => String(b.id || b._id) !== idToRemove));
+        // Also remove from localStorage immediately so heartbeat doesn't re-add it
+        const pendingJobs = JSON.parse(localStorage.getItem('vendorPendingJobs') || '[]');
+        const filtered = pendingJobs.filter(j => String(j.id || j._id) !== idToRemove);
+        localStorage.setItem('vendorPendingJobs', JSON.stringify(filtered));
       }
     };
 
@@ -160,11 +177,23 @@ export default function GlobalBookingAlert() {
             toast.success('Quote sent successfully!');
           } else {
             const bookingItem = activeAlertBookings.find(b => String(b.id || b._id) === String(id));
-            const isScheduled = bookingItem?.bookingType === 'scheduled';
-            await acceptBooking(id);
+            const acceptRes = await acceptBooking(id);
+            const updatedBooking = acceptRes?.data || {};
+
+            const isScheduled =
+              updatedBooking.bookingType === 'scheduled' ||
+              bookingItem?.bookingType === 'scheduled' ||
+              (updatedBooking.scheduledTime && updatedBooking.scheduledTime !== 'ASAP') ||
+              (bookingItem?.scheduledTime && bookingItem?.scheduledTime !== 'ASAP');
+
             if (!isScheduled) {
-              await assignWorker(id, 'SELF');
-              toast.success('Job claimed successfully! Assigned to you.');
+              try {
+                await assignWorker(id, 'SELF');
+                toast.success('Job claimed successfully! Assigned to you.');
+              } catch (assignErr) {
+                console.warn('[GlobalBookingAlert] Worker assignment skipped or failed:', assignErr?.response?.data?.message || assignErr.message);
+                toast.success('Job claimed successfully!');
+              }
             } else {
               toast.success('Scheduled job accepted! You can assign yourself or a worker 30 minutes before the start time.');
             }
@@ -181,11 +210,19 @@ export default function GlobalBookingAlert() {
 
           window.dispatchEvent(new Event('vendorJobsUpdated'));
           window.dispatchEvent(new Event('vendorStatsUpdated'));
-          toast.success('Job claimed successfully! Assigned to you.');
         } catch (e) {
           console.error('[GlobalBookingAlert] Failed to claim job:', e);
           const errorMsg = e.response?.data?.message || 'Failed to claim job';
           toast.error(errorMsg);
+
+          // If booking was already taken or expired, dismiss from local view so user is not trapped
+          if (e.response?.status === 409 || e.response?.status === 404 || errorMsg.includes('already') || errorMsg.includes('no longer available')) {
+            const pendingJobs = JSON.parse(localStorage.getItem('vendorPendingJobs') || '[]');
+            const updated = pendingJobs.filter(b => String(b.id || b._id) !== String(id));
+            localStorage.setItem('vendorPendingJobs', JSON.stringify(updated));
+            window.dispatchEvent(new CustomEvent('removeVendorBooking', { detail: { id } }));
+            setActiveAlertBookings(prev => prev.filter(b => String(b.id || b._id) !== String(id)));
+          }
         }
       }}
       onAssign={async (id) => {

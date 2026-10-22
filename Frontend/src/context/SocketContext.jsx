@@ -255,6 +255,9 @@ export const SocketProvider = ({ children }) => {
 
         // Save to localStorage for the Alert screen and Dashboard to read
         // Note: Even though we are moving to backend, keeping this for immediate UI responsiveness before potential refresh lag
+        const isScheduledBooking = data.bookingType === 'scheduled' || (data.scheduledTime && data.scheduledTime !== 'ASAP');
+        const derivedBookingType = data.bookingType || (isScheduledBooking ? 'scheduled' : 'instant');
+
         const newJob = {
           id: data.bookingId,
           serviceType: data.serviceName,
@@ -270,11 +273,12 @@ export const SocketProvider = ({ children }) => {
           brandName: data.brandName,
           brandIcon: data.brandIcon,
           categoryIcon: data.categoryIcon,
+          bookingType: derivedBookingType,
           scheduledDate: data.scheduledDate,
           scheduledTime: data.scheduledTime,
           timeSlot: {
-            date: new Date(data.scheduledDate).toLocaleDateString(),
-            time: data.scheduledTime
+            date: data.scheduledDate ? new Date(data.scheduledDate).toLocaleDateString() : 'ASAP',
+            time: data.scheduledTime || 'ASAP'
           },
           status: 'requested',
           bookingStatus: data.status,

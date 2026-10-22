@@ -76,11 +76,23 @@ const BookingAlert = () => {
         await submitBid(id, price, note);
         toast.success('Your quote has been submitted!');
       } else {
-        const isScheduled = booking?.bookingType === 'scheduled';
-        await acceptBooking(id);
+        const acceptRes = await acceptBooking(id);
+        const updatedBooking = acceptRes?.data || {};
+
+        const isScheduled =
+          updatedBooking.bookingType === 'scheduled' ||
+          booking?.bookingType === 'scheduled' ||
+          (updatedBooking.scheduledTime && updatedBooking.scheduledTime !== 'ASAP') ||
+          (booking?.scheduledTime && booking?.scheduledTime !== 'ASAP');
+
         if (!isScheduled) {
-          await assignWorker(id, 'SELF');
-          toast.success('Booking accepted & assigned to you!');
+          try {
+            await assignWorker(id, 'SELF');
+            toast.success('Booking accepted & assigned to you!');
+          } catch (assignErr) {
+            console.warn('[BookingAlert] Worker assignment skipped or failed:', assignErr?.response?.data?.message || assignErr.message);
+            toast.success('Booking accepted successfully!');
+          }
         } else {
           toast.success('Scheduled booking accepted! You can assign yourself or a worker 30 minutes before the start time.');
         }
@@ -96,6 +108,13 @@ const BookingAlert = () => {
     } catch (error) {
       console.error('Error accepting:', error);
       toast.error(error.response?.data?.message || 'Failed to process request.');
+      if (error.response?.status === 409 || error.response?.status === 404) {
+        const pendingJobs = JSON.parse(localStorage.getItem('vendorPendingJobs') || '[]');
+        const updatedPending = pendingJobs.filter(job => String(job.id || job._id) !== String(id));
+        localStorage.setItem('vendorPendingJobs', JSON.stringify(updatedPending));
+        window.dispatchEvent(new Event('vendorJobsUpdated'));
+        navigate('/vendor/dashboard', { replace: true });
+      }
     }
   };
 

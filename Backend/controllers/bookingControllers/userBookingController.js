@@ -158,12 +158,28 @@ const createBooking = async (req, res) => {
         }
         if (category) {
           searchArray.push(category._id.toString());
+          // Also include any parent group categories mapping this category (e.g. Painting -> Painting Service)
+          try {
+            const parentGroupCats = await Category.find({
+              isGroupCategory: true,
+              mappedCategories: category._id.toString()
+            }).select('_id title').lean();
+            for (const pCat of parentGroupCats) {
+              searchArray.push(pCat._id.toString());
+              searchArray.push(new RegExp(`^${pCat.title.trim()}$`, 'i'));
+            }
+          } catch (pCatErr) {
+            console.error('[CreateBooking] Parent group category lookup error:', pCatErr.message);
+          }
         }
         
-        // Find vendors who have the category ID or category Title
+        // Find vendors who have the category ID or Title in either categories or service array
         const vendorQuery = {
           isActive: true,
-          categories: { $in: searchArray }
+          $or: [
+            { categories: { $in: searchArray } },
+            { service: { $in: searchArray } }
+          ]
         };
         
         if (isConsultation) {
