@@ -59,7 +59,7 @@ const WorkerLogin = () => {
     // Zod Validation
     const validationResult = phoneSchema.safeParse({ phone: phoneNumber });
     if (!validationResult.success) {
-      toast.error(validationResult.error.errors[0].message);
+      toast.error((validationResult.error.issues || validationResult.error.errors || [])[0].message);
       return;
     }
 

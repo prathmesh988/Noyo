@@ -310,7 +310,7 @@ export const publicCatalogService = {
   getSubCategories: async (params = {}) => {
     const queryParams = new URLSearchParams();
     if (params.categoryId) queryParams.append('categoryId', params.categoryId);
-    
+
     // Check cache
     const cacheKey = `public_subcats_${queryParams.toString()}`;
     const cached = apiCache.get(cacheKey);
@@ -329,7 +329,7 @@ export const publicCatalogService = {
     if (params.categorySlug) queryParams.append('categorySlug', params.categorySlug);
     if (params.search) queryParams.append('search', params.search);
     if (params.cityId) queryParams.append('cityId', params.cityId);
-    
+
     // Add user location if available for proximity-based filtering
     const lat = localStorage.getItem('user_lat');
     const lng = localStorage.getItem('user_lng');
@@ -358,7 +358,7 @@ export const publicCatalogService = {
     if (params.categoryId) queryParams.append('categoryId', params.categoryId);
     if (params.subCategoryId) queryParams.append('subCategoryId', params.subCategoryId);
     if (params.cityId) queryParams.append('cityId', params.cityId);
-    
+
     // Add user location if available for proximity-based filtering
     const lat = localStorage.getItem('user_lat');
     const lng = localStorage.getItem('user_lng');
@@ -382,7 +382,7 @@ export const publicCatalogService = {
   getBrandBySlug: async (slug, cityId) => {
     const lat = localStorage.getItem('user_lat');
     const lng = localStorage.getItem('user_lng');
-    
+
     const queryParams = new URLSearchParams();
     if (cityId) queryParams.append('cityId', cityId);
     if (lat && lng) {

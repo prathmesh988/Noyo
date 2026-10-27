@@ -10,11 +10,16 @@ import loginIllustration from '../../../assets/images/loginpage.png';
 
 import { z } from "zod";
 
-// Zod schema
-const signupSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters").regex(/^[a-zA-Z\s]+$/, "Name can only contain letters"),
-  email: z.string().optional().refine(val => !val || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), "Invalid email address"),
-  phoneNumber: z.string().regex(/^[6-9]\d{9}$/, "Please enter a valid 10-digit Indian phone number"),
+// Zod schemas
+const completeRegistrationSchema = z.object({
+  name: z.string().trim().min(2, "Name must be at least 2 characters"),
+  email: z.string().trim().optional().refine(val => !val || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), "Invalid email address"),
+});
+
+const sendOtpSchema = z.object({
+  name: z.string().trim().min(2, "Name must be at least 2 characters"),
+  email: z.string().trim().optional().refine(val => !val || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val), "Invalid email address"),
+  phoneNumber: z.string().trim().regex(/^[6-9]\d{9}$/, "Please enter a valid 10-digit Indian phone number"),
 });
 
 const Signup = () => {
@@ -57,11 +62,35 @@ const Signup = () => {
   const nameInputRef = useRef(null);
   const otpInputRefs = useRef([]);
 
-  // Pre-fill from navigation state (Unified Flow)
+  // Pre-fill from navigation state or sessionStorage fallback (Unified Flow)
   useEffect(() => {
-    if (location.state?.phone && location.state?.verificationToken) {
-      setFormData(prev => ({ ...prev, phoneNumber: location.state.phone }));
-      setVerificationToken(location.state.verificationToken);
+    const statePhone = location.state?.phone;
+    const stateToken = location.state?.verificationToken;
+
+    if (statePhone && stateToken) {
+      const cleanPhone = String(statePhone).replace(/\D/g, '').slice(-10);
+      setFormData(prev => ({ ...prev, phoneNumber: cleanPhone }));
+      setVerificationToken(stateToken);
+      try {
+        sessionStorage.setItem('pendingUserVerification', JSON.stringify({ phone: cleanPhone, verificationToken: stateToken }));
+      } catch (e) {
+        console.error(e);
+      }
+    } else {
+      try {
+        const saved = sessionStorage.getItem('pendingUserVerification');
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (parsed?.verificationToken) {
+            if (parsed.phone) {
+              setFormData(prev => ({ ...prev, phoneNumber: parsed.phone }));
+            }
+            setVerificationToken(parsed.verificationToken);
+          }
+        }
+      } catch (e) {
+        console.error('Failed to parse cached verification session:', e);
+      }
     }
   }, [location.state]);
 
@@ -85,11 +114,17 @@ const Signup = () => {
   const handleDetailsSubmit = async (e) => {
     e.preventDefault();
 
-    // Zod Validation
-    const validationResult = signupSchema.safeParse(formData);
+    const activeSchema = verificationToken ? completeRegistrationSchema : sendOtpSchema;
+    const validationResult = activeSchema.safeParse({
+      name: formData.name ? formData.name.trim() : '',
+      email: formData.email ? formData.email.trim() : '',
+      phoneNumber: formData.phoneNumber ? formData.phoneNumber.trim() : ''
+    });
 
     if (!validationResult.success) {
-      validationResult.error.errors.forEach(err => toast.error(err.message));
+      // Support Zod 4 (error.issues) and Zod 3 (error.errors)
+      const issues = validationResult.error.issues || validationResult.error.errors || [];
+      issues.forEach(err => toast.error(err.message));
       return;
     }
 
@@ -98,12 +133,16 @@ const Signup = () => {
     if (verificationToken) {
       try {
         const response = await userAuthService.register({
-          name: formData.name,
-          email: formData.email || null,
+          name: formData.name.trim(),
+          email: formData.email?.trim() || null,
           verificationToken,
-          referralCode: referralCode || undefined
+          referralCode: referralCode?.trim() || undefined
         });
         if (response.success) {
+          try {
+            sessionStorage.removeItem('pendingUserVerification');
+          } catch (e) {}
+
           try {
             const { registerFCMToken } = await import('../../../services/pushNotificationService');
             await registerFCMToken('user', true);
@@ -129,7 +168,9 @@ const Signup = () => {
     }
 
     try {
-      const response = await userAuthService.sendOTP(formData.phoneNumber, formData.email || null);
+      const cleanPhone = formData.phoneNumber.replace(/\D/g, '').slice(-10);
+      const cleanEmail = formData.email?.trim() || null;
+      const response = await userAuthService.sendOTP(cleanPhone, cleanEmail);
       if (response.success) {
         setOtpToken(response.token);
         setIsLoading(false);
@@ -185,14 +226,18 @@ const Signup = () => {
     setIsLoading(true);
     try {
       const response = await userAuthService.register({
-        name: formData.name,
-        email: formData.email || null,
-        phone: formData.phoneNumber,
+        name: formData.name.trim(),
+        email: formData.email?.trim() || null,
+        phone: formData.phoneNumber.trim(),
         otp: otpValue,
         token: otpToken,
-        referralCode: referralCode || undefined
+        referralCode: referralCode?.trim() || undefined
       });
       if (response.success) {
+        try {
+          sessionStorage.removeItem('pendingUserVerification');
+        } catch (e) {}
+
         setIsLoading(false);
         try {
           const { registerFCMToken } = await import('../../../services/pushNotificationService');
@@ -264,7 +309,13 @@ const Signup = () => {
                   {verificationToken && (
                     <button
                       type="button"
-                      onClick={() => navigate('/user/login')}
+                      onClick={() => {
+                        try {
+                          sessionStorage.removeItem('pendingUserVerification');
+                        } catch (e) {}
+                        setVerificationToken('');
+                        navigate('/user/login');
+                      }}
                       className="flex items-center text-xs font-semibold text-gray-500 hover:text-[#B33A35] transition-colors mb-3 cursor-pointer"
                     >
                       <FiChevronLeft className="mr-0.5" /> Back to Login

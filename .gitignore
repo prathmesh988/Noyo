@@ -8,3 +8,6 @@ testing/cache/
 traces/
 videos/
 
+# AWS & SSH / SSL Keys
+*.pem
+*.key

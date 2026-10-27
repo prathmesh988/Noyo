@@ -304,7 +304,7 @@ const CategoriesPage = ({ catalog, setCatalog, selectedCity, cities = [], filter
     });
 
     if (!validationResult.success) {
-      const firstError = validationResult.error.errors[0];
+      const firstError = (validationResult.error.issues || validationResult.error.errors || [])[0];
       toast.error(firstError.message);
       return;
     }

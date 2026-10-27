@@ -122,7 +122,7 @@ const Home = () => {
       const newAddress = locationObj.address;
       setAddress(newAddress);
       localStorage.setItem('currentAddress', newAddress);
-      
+
       if (locationObj.lat && locationObj.lng) {
         localStorage.setItem('user_lat', locationObj.lat);
         localStorage.setItem('user_lng', locationObj.lng);
@@ -568,7 +568,7 @@ const Home = () => {
   }
 
   return (
-  <div className="min-h-screen pb-20 relative" style={{ backgroundColor: 'var(--background)' }}>
+    <div className="min-h-screen pb-20 relative" style={{ backgroundColor: 'var(--background)' }}>
       {/* Group Category Bottom Sheet */}
       <GroupCategoryBottomSheet
         isOpen={groupCategorySheet.open}
@@ -610,7 +610,7 @@ const Home = () => {
             onLocationClick={handleLocationClick}
           />
         </motion.div>
- 
+
         <main className="pt-[140px] space-y-8 pb-24 max-w-screen-xl mx-auto w-full">
           {!isLocationSupported ? (
             <div className="flex flex-col items-center justify-center pt-20 pb-10 px-6 text-center min-h-[60vh]">
@@ -639,24 +639,24 @@ const Home = () => {
             <>
               {/* Sliding Offer Banners */}
               {!isSearchOpen && (
-                <OfferBannerSlider 
-                  banners={homeContent?.banners && homeContent.banners.length > 0 
+                <OfferBannerSlider
+                  banners={homeContent?.banners && homeContent.banners.length > 0
                     ? homeContent.banners.map(b => ({
-                        ...b,
-                        imageUrl: toAssetUrl(b.imageUrl),
-                        link: b.link || b.slug || ''
-                      }))
+                      ...b,
+                      imageUrl: toAssetUrl(b.imageUrl),
+                      link: b.link || b.slug || ''
+                    }))
                     : offerBanners
-                  } 
+                  }
                 />
               )}
- 
+
               {/* Search Bar Section */}
               <div className="mt-5 px-5 max-w-lg lg:max-w-2xl mx-auto w-full flex items-center gap-3">
                 <div className="flex-1">
                   <SearchBar onInputClick={() => setIsSearchOpen(true)} />
                 </div>
-                <button 
+                <button
                   onClick={() => navigate('/user/categories')}
                   className="w-[52px] h-[52px] rounded-2xl flex items-center justify-center shrink-0 border transition-all duration-300"
                   style={{
@@ -697,8 +697,8 @@ const Home = () => {
               {homeContent?.isCategoriesVisible !== false && (
                 <>
                   {/* Service Categories */}
-                  <motion.section 
-                    variants={itemVariants} 
+                  <motion.section
+                    variants={itemVariants}
                     className="relative overflow-hidden py-2"
                     style={{ backgroundColor: 'var(--background)' }}
                   >
@@ -709,11 +709,11 @@ const Home = () => {
                       subtitle="Premium Home Services"
                     />
                   </motion.section>
- 
+
                   {/* Products & Materials Section */}
                   {categories.some(c => c.isGroupCategory && c.categoryType === 'product') && (
-                    <motion.section 
-                      variants={itemVariants} 
+                    <motion.section
+                      variants={itemVariants}
                       className="relative overflow-hidden py-2"
                       style={{ backgroundColor: 'var(--background)' }}
                     >
@@ -725,45 +725,45 @@ const Home = () => {
                       />
                     </motion.section>
                   )}
- 
+
                 </>
               )}
 
               {/* Popular Services Section */}
-              {homeContent?.isPopularServicesVisible !== false && 
-               Array.isArray(homeContent?.popularServices) && 
-               homeContent.popularServices.length > 0 && (
-                <motion.div variants={itemVariants}>
-                  <ServiceSectionWithRating
-                    title="Popular services"
-                    subtitle="Most demanded home services"
-                    compact={true}
-                    services={homeContent.popularServices.map((service, index) => ({
-                      id: service.id || service._id || index,
-                      serviceId: service.serviceId || service.id || service._id,
-                      categoryId: service.categoryId,
-                      title: service.title,
-                      rating: service.rating || "4.5",
-                      reviews: service.reviews || "1.2k reviews",
-                      price: service.price,
-                      originalPrice: service.originalPrice,
-                      discount: service.discount,
-                      image: toAssetUrl(service.image),
-                      slug: service.slug
-                    }))}
-                    onSeeAllClick={() => navigate('/user/categories')}
-                    onServiceClick={(service) => {
-                      if (service.categoryId) {
-                        const cat = categories.find(c => c.id === service.categoryId);
-                        if (cat) handleCategoryClick(cat);
-                      } else {
-                        navigate('/user/categories');
-                      }
-                    }}
-                    onAddClick={handleAddClick}
-                  />
-                </motion.div>
-              )}
+              {homeContent?.isPopularServicesVisible !== false &&
+                Array.isArray(homeContent?.popularServices) &&
+                homeContent.popularServices.length > 0 && (
+                  <motion.div variants={itemVariants}>
+                    <ServiceSectionWithRating
+                      title="Popular services"
+                      subtitle="Most demanded home services"
+                      compact={true}
+                      services={homeContent.popularServices.map((service, index) => ({
+                        id: service.id || service._id || index,
+                        serviceId: service.serviceId || service.id || service._id,
+                        categoryId: service.categoryId,
+                        title: service.title,
+                        rating: service.rating || "4.5",
+                        reviews: service.reviews || "1.2k reviews",
+                        price: service.price,
+                        originalPrice: service.originalPrice,
+                        discount: service.discount,
+                        image: toAssetUrl(service.image),
+                        slug: service.slug
+                      }))}
+                      onSeeAllClick={() => navigate('/user/categories')}
+                      onServiceClick={(service) => {
+                        if (service.categoryId) {
+                          const cat = categories.find(c => c.id === service.categoryId);
+                          if (cat) handleCategoryClick(cat);
+                        } else {
+                          navigate('/user/categories');
+                        }
+                      }}
+                      onAddClick={handleAddClick}
+                    />
+                  </motion.div>
+                )}
 
               {/* Upcoming Categories Section (Replacing Smart Protect Blue Banner) */}
               {upcomingCategories.length > 0 && (() => {
@@ -787,21 +787,21 @@ const Home = () => {
 
                     {/* Staggered Card Stack Container */}
                     <div className="relative pt-2">
-                      
+
                       {/* Inner Stack Wrapper to align layers with the main card bottom */}
                       <div className="relative z-10">
                         {/* Third Layer Card (Deepest) */}
                         {upcomingCategories.length > 2 && (
                           <div className="absolute left-5 right-5 bottom-0 h-full bg-[#B33A35]/25 rounded-[24px] shadow-sm transform translate-y-3 z-0 pointer-events-none border border-white/5" />
                         )}
-                        
+
                         {/* Second Layer Card (Middle) */}
                         {upcomingCategories.length > 1 && (
                           <div className="absolute left-2.5 right-2.5 bottom-0 h-full bg-[#B33A35]/50 rounded-[24px] shadow-md transform translate-y-1.5 z-10 pointer-events-none border border-white/10" />
                         )}
 
                         {/* Main Card (Top) */}
-                        <div 
+                        <div
                           onClick={() => {
                             // Cycle on click
                             if (upcomingCategories.length > 1) {
@@ -824,9 +824,9 @@ const Home = () => {
                               {/* White Circle Container for Icon */}
                               <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-[0_4px_12px_rgba(0,0,0,0.06)] overflow-hidden shrink-0 border border-white/50">
                                 {activeCat.icon ? (
-                                  <img 
-                                    src={activeCat.icon} 
-                                    alt={activeCat.title} 
+                                  <img
+                                    src={activeCat.icon}
+                                    alt={activeCat.title}
                                     className="w-9 h-9 object-contain"
                                   />
                                 ) : (
@@ -855,11 +855,10 @@ const Home = () => {
                                 e.stopPropagation();
                                 handleCategoryClick(activeCat);
                               }}
-                              className={`shrink-0 w-11 h-11 rounded-full flex items-center justify-center transition-all ${
-                                activeCat.isInterested
+                              className={`shrink-0 w-11 h-11 rounded-full flex items-center justify-center transition-all ${activeCat.isInterested
                                   ? 'bg-white text-green-500 shadow-md'
                                   : 'bg-white/25 hover:bg-white/35 text-white active:scale-95'
-                              }`}
+                                }`}
                             >
                               {activeCat.isInterested ? (
                                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
@@ -883,7 +882,7 @@ const Home = () => {
                             </div>
                             <div className="flex items-center gap-1.5 opacity-95">
                               <svg className="w-3.5 h-3.5 text-orange-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2.5">
-                                  <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                               </svg>
                               <span>{activeCat.interestedCount || 0} Interested</span>
                             </div>
@@ -901,9 +900,8 @@ const Home = () => {
                                 e.stopPropagation();
                                 setCurrentStackIndex(dotIdx);
                               }}
-                              className={`h-1.5 rounded-full transition-all duration-300 ${
-                                currentStackIndex === dotIdx ? 'w-5 bg-[#B33A35]' : 'w-1.5 bg-gray-300'
-                              }`}
+                              className={`h-1.5 rounded-full transition-all duration-300 ${currentStackIndex === dotIdx ? 'w-5 bg-[#B33A35]' : 'w-1.5 bg-gray-300'
+                                }`}
                             />
                           ))}
                         </div>
@@ -933,7 +931,7 @@ const Home = () => {
                   </div>
 
                   {/* Horizontal Scroll list of past services */}
-                  <div 
+                  <div
                     className="flex gap-4 overflow-x-auto pb-3 -mx-5 px-5 no-scrollbar"
                     style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                   >
@@ -1165,7 +1163,7 @@ const Home = () => {
       {comingSoonCategory && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
           <div className="bg-white rounded-3xl p-6 max-w-sm w-full shadow-2xl relative border border-gray-100 flex flex-col items-center text-center">
-            <button 
+            <button
               onClick={() => setComingSoonCategory(null)}
               className="absolute top-4 right-4 p-2 rounded-full hover:bg-gray-100 text-gray-400 hover:text-gray-600 transition-colors"
             >
@@ -1173,21 +1171,21 @@ const Home = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            
+
             <div className="w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center mb-4">
               <svg className="w-8 h-8 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
               </svg>
             </div>
-            
+
             <h3 className="text-xl font-extrabold text-gray-900 mb-2">
               {comingSoonCategory.title}
             </h3>
-            
+
             <p className="text-sm text-gray-500 mb-6 font-medium">
               We are launching this category soon in your area. Click below to show your interest, and we'll notify you!
             </p>
-            
+
             <button
               disabled={comingSoonCategory.isInterested}
               onClick={async () => {
@@ -1195,8 +1193,8 @@ const Home = () => {
                   const res = await publicCatalogService.registerInterest(comingSoonCategory.id || comingSoonCategory._id);
                   if (res.success) {
                     toast.success(res.message);
-                    setCategories(prev => prev.map(c => 
-                      c.id === comingSoonCategory.id 
+                    setCategories(prev => prev.map(c =>
+                      c.id === comingSoonCategory.id
                         ? { ...c, isInterested: true, interestedCount: (c.interestedCount || 0) + 1 }
                         : c
                     ));
@@ -1210,11 +1208,10 @@ const Home = () => {
                   toast.error(msg);
                 }
               }}
-              className={`w-full py-3.5 px-6 rounded-2xl font-bold shadow-md transition-all ${
-                comingSoonCategory.isInterested 
+              className={`w-full py-3.5 px-6 rounded-2xl font-bold shadow-md transition-all ${comingSoonCategory.isInterested
                   ? 'bg-green-500 text-white cursor-default shadow-none'
                   : 'bg-[#B33A35] text-white hover:bg-[#9E2E2A] hover:shadow-lg'
-              }`}
+                }`}
               style={{ backgroundColor: comingSoonCategory.isInterested ? '#22c55e' : '#B33A35' }}
             >
               {comingSoonCategory.isInterested ? "✓ Interest Registered" : "I'm Interested!"}

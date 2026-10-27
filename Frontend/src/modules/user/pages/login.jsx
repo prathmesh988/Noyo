@@ -60,7 +60,8 @@ const Login = () => {
     // Zod Validation
     const validationResult = phoneSchema.safeParse({ phone: phoneNumber });
     if (!validationResult.success) {
-      toast.error(validationResult.error.errors[0].message);
+      const issues = validationResult.error.issues || validationResult.error.errors || [];
+      toast.error(issues[0]?.message || 'Please enter a valid phone number');
       return;
     }
 
@@ -156,7 +157,7 @@ const Login = () => {
           toast.success('Phone verified! Please complete your registration.');
           navigate('/user/signup', {
             state: {
-              phone: phoneNumber,
+              phone: phoneNumber.replace(/\D/g, '').slice(-10),
               verificationToken: response.verificationToken
             }
           });
